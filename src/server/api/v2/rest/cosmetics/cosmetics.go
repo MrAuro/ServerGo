@@ -24,7 +24,7 @@ func GetBadges(router fiber.Router) {
 
 	router.Get("/", func(c *fiber.Ctx) error {
 		ctx := c.Context()
-		c.Set("Cache-Control", "max-age=150 s-maxage=300")
+		c.Set("Cache-Control", "max-age=150 s-maxage=600")
 
 		idType := c.Query("user_identifier")
 

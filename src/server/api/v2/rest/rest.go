@@ -10,7 +10,6 @@ import (
 	"github.com/SevenTV/ServerGo/src/server/api/v2/rest/emotes"
 	"github.com/SevenTV/ServerGo/src/server/api/v2/rest/users"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/rewrite/v2"
 )
 
 func RestV2(app fiber.Router) fiber.Router {
@@ -20,11 +19,6 @@ func RestV2(app fiber.Router) fiber.Router {
 
 		return c.Next()
 	})
-	restGroup.Use(rewrite.New(rewrite.Config{
-		Rules: map[string]string{
-			"/v2/badges": "/v2/cosmetics",
-		},
-	}))
 
 	emoteGroup := restGroup.Group("/emotes")
 	emotes.CreateEmoteRoute(emoteGroup)
